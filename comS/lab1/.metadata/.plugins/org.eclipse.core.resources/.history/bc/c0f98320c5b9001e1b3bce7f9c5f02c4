@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+/**
+ * @author isaiah
+ *
+ */
+module project1 {
+	exports lab1 to speccheck.lab1;
+	requires speccheck;
+	uses example.SpecChecker;
+}

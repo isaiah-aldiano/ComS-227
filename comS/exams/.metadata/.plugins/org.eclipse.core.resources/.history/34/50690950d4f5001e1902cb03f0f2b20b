@@ -1,0 +1,58 @@
+package exam2_tests;
+
+import java.util.ArrayList;
+
+public class problems {
+	
+	public static String blankVowels(String str) {
+		ArrayList<Character> vowels = new ArrayList<Character>();
+		vowels.add('a');
+		vowels.add('e');
+		vowels.add('i');
+		vowels.add('o');
+		vowels.add('u');
+		
+		char[] word = str.toCharArray();
+		
+		for(int i = 0; i < word.length; i++) {
+			if(vowels.contains(word[i])) {
+				word[i] = '_';
+			}
+		}
+			
+		return new String(word);
+	}
+	
+	public static int[] removeDuplicates(int[] duppsArr) {
+		ArrayList<Integer> noDuppsList = new ArrayList<Integer>();
+		
+		
+		for(int i = 0; i < duppsArr.length; i++) {
+			if(!noDuppsList.contains(duppsArr[i])) {
+				noDuppsList.add(duppsArr[i]);
+			}
+		}
+		
+		int[] noDuppsArr = new int[noDuppsList.size()];
+		
+		for(int j = 0; j < noDuppsList.size(); j++) {
+			noDuppsArr[j] = noDuppsList.get(j);
+		}
+		
+		return noDuppsArr;
+		
+	}
+	
+	public static void main(String args[]) {
+		int[] duppsList = {5, 4, 5, 6, 4, 2};
+		int[] noDuppsArr = removeDuplicates(duppsList);
+		
+//		System.out.println(blankVowels("volume"));
+		
+		for(int i = 0; i < noDuppsArr.length; i++) {
+			System.out.print(noDuppsArr[i] + " ");
+
+		}
+	}
+	
+}

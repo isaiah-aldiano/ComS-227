@@ -1,0 +1,35 @@
+package project6;
+import java.awt.Point;
+
+import plotter.Plotter;
+import plotter.Polyline;
+
+public class checkpoint2 {
+	private static Polyline parseOneLine(String line)
+	{
+		int pSize = -1;
+		String color = null;
+		
+		String[] pli= line.split(" ");
+		
+		if(Integer.parseInt(pli[0]) > 0) {
+			pSize = Integer.parseInt(pli[0]);
+			color = pli[1];
+		} else {
+			color = pli[0];
+		}
+		
+		Polyline pl = new Polyline();
+		
+		
+	}
+	
+	public static void main(String args[]) {
+		Plotter plotter = new Plotter();
+	    Polyline p = parseOneLine("red 100 100 200 100 200 200 100 200 100 100");
+	    plotter.plot(p);
+	    
+	    p = parseOneLine("2 blue 250 100 400 350 100 350 250 100");
+	    plotter.plot(p);
+	}
+}

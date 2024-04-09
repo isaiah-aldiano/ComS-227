@@ -1,0 +1,60 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+
+import api.BodySegment;
+import api.Cell;
+import api.Exit;
+import api.Wall;
+import hw3.GameFileUtil;
+import hw3.Lizard;
+import hw3.LizardGame;
+import hw3.MockGameConsole;
+
+public class randomTests {
+	public void test12() {
+		LizardGame game = new LizardGame(20, 20);
+		MockGameConsole listeners = new MockGameConsole();
+		game.setListeners(listeners, listeners);
+		game.addWall(new Wall(game.getCell(4, 5)));
+		game.addExit(new Exit(game.getCell(5, 5)));
+		Lizard liz = new Lizard();
+		ArrayList<BodySegment> segments = new ArrayList<BodySegment>();
+		Cell tailCell = game.getCell(1, 2);
+		Cell innerCell1 = game.getCell(2, 2);
+		Cell innerCell2 = game.getCell(2, 1);
+		Cell headCell = game.getCell(1, 1);
+		BodySegment tail = new BodySegment(liz, tailCell);
+		BodySegment inner1 = new BodySegment(liz, innerCell1);
+		BodySegment inner2 = new BodySegment(liz, innerCell2);
+		BodySegment head = new BodySegment(liz, headCell);
+		segments.add(tail);
+		segments.add(inner1);
+		segments.add(inner2);
+		segments.add(head);
+		liz.setSegments(segments);
+		game.addLizard(liz);
+		
+		GameFileUtil.load("speckcheck.txt", game);
+		
+		int width = game.getWidth();
+		int height = game.getHeight();
+		Cell wallCell = game.getCell(5, 0);
+		Cell exitCell = game.getCell(7, 4);
+		Cell lizardCell = game.getCell(1, 4);
+		Cell emptyCell = game.getCell(1, 0);
+		ArrayList<Lizard> lizards = game.getLizards();
+		Lizard sal = lizards.get(0);
+		Cell salHeadCell = game.getCell(2, 2);
+		assertEquals("width: ", 8, width);
+		assertEquals("height: ", 9, height);
+		assertEquals("is wall: ", true, wallCell.getWall() != null);
+		assertEquals("is exit: ", true, exitCell.getExit() != null);
+		assertEquals("is lizard: ", true, lizardCell.getLizard() != null);
+		assertEquals("is empty: ", true, emptyCell.isEmpty());
+		assertEquals("number of lizards: ", 2, lizards.size());
+		assertEquals("first lizard size is: ", 7, sal.getSegments().size());
+		assertEquals("first lizard's head cell is: ", salHeadCell, sal.getHeadSegment().getCell());
+	}
+}

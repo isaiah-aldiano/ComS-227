@@ -1,0 +1,22 @@
+package lab7;
+
+public class bricks {
+	public static void main(String args[]) {
+		int size = 5;
+		
+		System.out.print(countPatterns(size));
+	}
+	
+	private static int countPatterns(int size) {
+		
+		
+		if(size < 0) {
+			return 0;
+		} else if (size == 1) {
+			return 1;
+		} else {
+			return countPatterns(size - 1) + countPatterns(size - 3);
+		}
+	
+	}
+}

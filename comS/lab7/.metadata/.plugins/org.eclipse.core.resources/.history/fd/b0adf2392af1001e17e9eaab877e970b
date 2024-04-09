@@ -1,0 +1,19 @@
+package lab7;
+
+public class bricks {
+	public static void main(String args[]) {
+		
+	}
+	
+	private static int combos(int size) {
+		int brick1 = 1;
+		int brick3 = 3;
+		
+		int total = 0;
+		
+		
+		
+		
+		return total;
+	}
+}

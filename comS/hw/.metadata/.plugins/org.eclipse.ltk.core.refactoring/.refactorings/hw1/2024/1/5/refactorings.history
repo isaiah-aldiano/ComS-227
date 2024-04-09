@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move &apos;hw1ui.jar&apos; to &apos;resources&apos;" description="Move &apos;hw1ui.jar&apos; to &apos;resources&apos;" destination="resources" element1="hw1ui.jar" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1706686009130" updateReferences="true"/>
+</session>

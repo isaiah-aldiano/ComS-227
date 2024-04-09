@@ -1,0 +1,29 @@
+package exam2_tests;
+
+import java.util.ArrayList;
+
+public class problems {
+	
+	public static String blankVowels(String str) {
+		ArrayList<Character> vowels = new ArrayList<Character>();
+		vowels.add('a');
+		vowels.add('e');
+		vowels.add('i');
+		vowels.add('o');
+		vowels.add('u');
+		
+		char[] word = str.toCharArray();
+		
+		for(int i = 0; i < word.length; i++) {
+			if(vowels.contains(word[i])) {
+				word[i] = '_';
+			}
+		}
+
+		return word.toString();
+	}
+	
+	public static void main(String args[]) {
+		System.out.println(blankVowels("volume"));
+	}
+}

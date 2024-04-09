@@ -1,0 +1,11 @@
+package project6;
+
+public class checkpoint2 {
+	private static Polyline parseOneLine(String line)
+	  {
+	  }
+	
+	public static void main(String args[]) {
+		
+	}
+}
