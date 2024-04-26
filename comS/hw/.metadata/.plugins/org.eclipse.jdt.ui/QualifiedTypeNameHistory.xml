@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="api.Exit"/>
     <fullyQualifiedTypeName name="api.BodySegment"/>
     <fullyQualifiedTypeName name="api.Direction"/>
+    <fullyQualifiedTypeName name="api.AbstractElement"/>
 </qualifiedTypeNameHistroy>
