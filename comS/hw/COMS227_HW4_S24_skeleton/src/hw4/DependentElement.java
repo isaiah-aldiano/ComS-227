@@ -2,7 +2,7 @@ package hw4;
 
 import api.AbstractElement;
 
-public abstract class DependentElement extends ViewableElement {
+public abstract class DependentElement {
 	/*
 	 * Class for FollowerElement and AttatchedElement
 	 */
@@ -11,13 +11,11 @@ public abstract class DependentElement extends ViewableElement {
 	private int hover;
 
 	public DependentElement(int width, int height, int offSet) {
-		super(width, height);
 		this.offSet = offSet;
 
 	}
 
 	public DependentElement(int width, int height, int offSet, int hover) {
-		super(width, height);
 		this.offSet = offSet;
 		this.hover = hover;
 	}

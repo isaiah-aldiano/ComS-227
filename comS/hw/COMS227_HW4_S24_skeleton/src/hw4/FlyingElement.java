@@ -8,7 +8,7 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class FlyingElement extends IndependentElement {
+public class FlyingElement {
 
 	/**
 	 * Constructs a new FlyingElement. By default it should be grounded, meaning
@@ -20,7 +20,7 @@ public class FlyingElement extends IndependentElement {
 	 * @param height element's height
 	 */
 	public FlyingElement(double x, double y, int width, int height) {
-		super(x, y, width, height);
+
 	}
 
 	// TODO: everything

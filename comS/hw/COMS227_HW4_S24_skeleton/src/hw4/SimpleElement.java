@@ -13,7 +13,7 @@ package hw4;
  * @author Isaiah Aldiano
  */
 // TODO: This class must directly or indirectly extend AbstractElement
-public class SimpleElement {
+public class SimpleElement extends ViewableElement {
 
 	/**
 	 * Constructs a new SimpleElement.
@@ -24,7 +24,7 @@ public class SimpleElement {
 	 * @param height element's height
 	 */
 	public SimpleElement(double x, double y, int width, int height) {
-		// TODO: everything
+		super(x, y, width, height);
 	}
 
 	// TODO: everything

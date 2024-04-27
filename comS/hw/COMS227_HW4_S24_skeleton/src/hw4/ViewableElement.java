@@ -8,24 +8,31 @@ public abstract class ViewableElement extends AbstractElement {
 	/*
 	 * Class for Flying, Lift, Moving, Platform, Simple, Vanish elements
 	 */
-
+	private double x;
+	private double y;
 	private int width;
 	private int height;
+	private int frameCount;
+	private boolean marked;
+	private Rectangle rect;
 
-	public ViewableElement(int width, int height) {
+	public ViewableElement(double x, double y, int width, int height) {
+		this.x = x;
+		this.y = y;
 		this.height = height;
 		this.width = width;
+		this.frameCount = 0;
+		this.rect = new Rectangle((int) x, (int) y, width, height);
 	}
 
 	@Override
 	public int getXInt() {
-		return 0;
+		return (int) Math.round(x);
 	}
 
 	@Override
 	public int getYInt() {
-		// TODO Auto-generated method stub
-		return 0;
+		return (int) Math.round(y);
 	}
 
 	@Override
@@ -40,56 +47,66 @@ public abstract class ViewableElement extends AbstractElement {
 
 	@Override
 	public Rectangle getRect() {
-		// TODO Auto-generated method stub
-		return null;
+		return rect;
 	}
 
 	@Override
 	public void setPosition(double newX, double newY) {
-		// TODO Auto-generated method stub
-
+		this.x = newX;
+		this.y = newY;
 	}
 
 	@Override
 	public double getXReal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return x;
 	}
 
 	@Override
 	public double getYReal() {
-		// TODO Auto-generated method stub
-		return 0;
+		return y;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-
+		frameCount++;
 	}
 
 	@Override
 	public int getFrameCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return frameCount;
 	}
 
 	@Override
 	public boolean isMarked() {
-		// TODO Auto-generated method stub
-		return false;
+		return marked;
 	}
 
 	@Override
 	public void markForDeletion() {
-		// TODO Auto-generated method stub
-
+		this.marked = true;
 	}
 
 	@Override
 	public boolean collides(AbstractElement other) {
-		// TODO Auto-generated method stub
-		return false;
+		// Calculate coordinates of the bottom-right corner for the first rectangle
+		int rect1_x2 = other.getXInt() + other.getWidth();
+		int rect1_y2 = other.getYInt() + other.getHeight();
+
+		int this_x2 = getXInt() + getWidth();
+		int this_y2 = getYInt() + getHeight();
+
+		// Check if one rectangle is to the left of the other rectangle
+		if (rect1_x2 <= getXInt() || this_x2 <= other.getXInt()) {
+			return false;
+		}
+
+		// Check if one rectangle is above the other rectangle
+		if (rect1_y2 <= getYInt() || this_y2 <= other.getYInt()) {
+			return false;
+		}
+
+		return true;
+
 	}
 
 }
