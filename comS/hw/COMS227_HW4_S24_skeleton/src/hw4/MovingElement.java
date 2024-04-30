@@ -8,7 +8,7 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class MovingElement {
+public class MovingElement extends DynamicElement {
 
 	/**
 	 * Constructs a MovingElement with a default velocity of zero in both
@@ -20,7 +20,7 @@ public class MovingElement {
 	 * @param height object's height
 	 */
 	public MovingElement(double x, double y, int width, int height) {
-		// TODO: everything
+		super(x, y, width, height);
 	}
 
 	// TODO: everything

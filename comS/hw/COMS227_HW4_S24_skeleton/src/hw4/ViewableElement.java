@@ -69,6 +69,7 @@ public abstract class ViewableElement extends AbstractElement {
 	@Override
 	public void update() {
 		frameCount++;
+
 	}
 
 	@Override

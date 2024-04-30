@@ -30,4 +30,16 @@ public class DynamicElement extends ViewableElement {
 		this.deltaY = deltaY;
 	}
 
+	public void deltaYPlusGravity(double gravity) {
+		this.deltaY += gravity;
+	}
+
+	@Override
+	public void update() {
+		super.update();
+
+		// Updates real x and y with deltaX and deltaY
+		setPosition(getXReal() + getDeltaX(), getYReal() + getDeltaY());
+	}
+
 }
