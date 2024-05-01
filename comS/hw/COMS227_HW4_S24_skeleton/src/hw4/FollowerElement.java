@@ -13,7 +13,10 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class FollowerElement {
+public class FollowerElement extends BoundedElement {
+
+	private int offset;
+	private ViewableElement base;
 
 	/**
 	 * Constructs a new FollowerElement. Before being added to a "base" element such
@@ -29,9 +32,12 @@ public class FollowerElement {
 	 *                      x-coordinate
 	 */
 	public FollowerElement(int width, int height, int initialOffset) {
-		// TODO: everything
+		super(0, 0, width, height);
+		this.offset = initialOffset;
 	}
 
-	// TODO: everything
-
+	public void setBase(ViewableElement base) {
+		this.base = base;
+//		setPosition(base.getXReal() + offset, base.getYReal() - getHeight() - );
+	}
 }

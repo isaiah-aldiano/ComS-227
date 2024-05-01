@@ -1,5 +1,7 @@
 package testing;
 
+import hw4.AttachedElement;
+import hw4.PlatformElement;
 import hw4.SimpleElement;
 
 public class tests {
@@ -81,6 +83,79 @@ public class tests {
 //		System.out.println(p.getYReal()); // expected 6
 //		System.out.println(p.getDeltaY());// expected 3
 //		System.out.println();
+
+		// VANISHING ELEMENT
+
+//		VanishingElement p = new VanishingElement(0, 0, 0, 0, 3);
+//		System.out.println(p.getLife());
+//		System.out.println(p.isMarked());
+//		System.out.println();
+//
+//		p.update();
+//
+//		System.out.println(p.getLife());
+//		System.out.println(p.isMarked());
+//		System.out.println();
+//
+//		p.update();
+//
+//		System.out.println(p.getLife());
+//		System.out.println(p.isMarked());
+//		System.out.println();
+//
+//		p.update();
+//
+//		System.out.println(p.getLife());
+//		System.out.println(p.isMarked());
+//		System.out.println();
+//
+//		p.update();
+//
+//		System.out.println(p.getLife());
+//		System.out.println(p.isMarked());
+//		System.out.println();
+
+		// Platform
+
+		// left side at x = 50, width 10, right side at 60
+		PlatformElement p = new PlatformElement(50, 200, 10, 10);
+		p.setBounds(40, 70);
+		p.setVelocity(6, 0);
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [56, 66]
+//		System.out.println("Velocity " + p.getDeltaX()); // 6.0
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [60, 70]
+//		System.out.println("Velocity " + p.getDeltaX()); // -6.0
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [54, 64]
+//		System.out.println("Velocity " + p.getDeltaX()); // -6.0
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [48, 58]
+//		System.out.println("Velocity " + p.getDeltaX()); // -6.0
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [42, 52]
+//		System.out.println("Velocity " + p.getDeltaX()); // -6.0
+//		p.update();
+//		System.out.println(p.getXReal() + ", " + (p.getXReal() + 10)); // [40, 50]
+//		System.out.println("Velocity " + p.getDeltaX()); // 6.0
+
+		// size 5 x 5, offset 2 units from left of PlatformElement, 15 above
+		AttachedElement c = new AttachedElement(5, 5, 2, 15);
+		// this should automatically make p the base of c
+		p.addAssociated(c);
+		// x position should be the base position + 2 = 52
+		// y position should be base y - AttachedElement height - hover = 180
+		System.out.println(c.getXReal()); // expected 52
+		System.out.println(c.getYReal()); // expected 180
+		p.update();
+		System.out.println(c.getXReal()); // expected 58
+		System.out.println(c.getYReal()); // expected 180
+		p.update();
+		System.out.println(c.getXReal()); // expected 62
+		System.out.println(c.getYReal()); // expected 180
+		// calling update on p should update associated elements too
+		System.out.println(c.getFrameCount()); // expected 2
 
 	}
 

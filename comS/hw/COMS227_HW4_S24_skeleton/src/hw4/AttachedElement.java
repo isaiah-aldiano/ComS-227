@@ -9,7 +9,12 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class AttachedElement {
+public class AttachedElement extends ViewableElement {
+
+	private int offset;
+	private double hover;
+	private double staticY;
+	private ViewableElement base;
 
 	/**
 	 * Constructs a new AttachedElement. Before being added to an associated "base"
@@ -29,9 +34,22 @@ public class AttachedElement {
 	 *               the hover amount
 	 */
 	public AttachedElement(int width, int height, int offset, int hover) {
-		// TODO: everything
+		super(0, 0, width, height);
+		this.offset = offset; // X
+		this.hover = hover; // Y
+		this.staticY = 0;
 	}
 
-	// TODO: everything
+	public void setBase(ViewableElement base) {
+		this.base = base;
+		this.staticY = base.getYReal() - getHeight() - hover;
+		setPosition(base.getXReal() + offset, staticY);
+	}
+
+	@Override
+	public void update() {
+		super.update();
+		setPosition(base.getXReal() + offset, staticY);
+	}
 
 }

@@ -7,7 +7,9 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class VanishingElement {
+public class VanishingElement extends ViewableElement {
+
+	private int life;
 
 	/**
 	 * Constructs a new VanishingElement.
@@ -20,9 +22,27 @@ public class VanishingElement {
 	 *                    deletion
 	 */
 	public VanishingElement(double x, double y, int width, int height, int initialLife) {
-		// TODO: everything
+		super(x, y, width, height);
+		this.life = initialLife;
 	}
 
 	// TODO: everything
+
+	public int getLife() {
+		return life;
+	}
+
+	@Override
+	public void update() {
+		super.update();
+
+		if (life > 0) {
+			life -= 1;
+		}
+
+		if (life == 0 && isMarked() == false) {
+			markForDeletion();
+		}
+	}
 
 }

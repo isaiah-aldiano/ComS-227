@@ -1,6 +1,6 @@
 package hw4;
 
-public class DynamicElement extends ViewableElement {
+public abstract class DynamicElement extends ViewableElement {
 
 	private double deltaX;
 	private double deltaY;
@@ -16,6 +16,10 @@ public class DynamicElement extends ViewableElement {
 	 */
 	public double getDeltaX() {
 		return deltaX;
+	}
+
+	public void inverseX() {
+		deltaX *= -1;
 	}
 
 	/**

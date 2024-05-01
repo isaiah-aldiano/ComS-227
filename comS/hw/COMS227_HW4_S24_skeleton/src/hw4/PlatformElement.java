@@ -10,7 +10,7 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class PlatformElement {
+public class PlatformElement extends ParentableElement {
 
 	/**
 	 * Constructs a new PlatformElement. Initially the left and right boundaries are
@@ -23,9 +23,28 @@ public class PlatformElement {
 	 * @param height object's height
 	 */
 	public PlatformElement(double x, double y, int width, int height) {
-		// TODO: everything
+		super(x, y, width, height);
 	}
-	
-	// TODO: everything
+
+	@Override
+	public void update() {
+		// If deltaX doesn't surpass max or min call normal update
+		if (getXReal() + getDeltaX() >= getMin() && (getXReal() + getWidth()) + getDeltaX() <= getMax()) {
+			super.update();
+		} else {
+			if (getXReal() + getDeltaX() < getMin()) {
+				setPosition(getMin(), getYReal());
+
+			} else if ((getXReal() + getWidth()) + getDeltaX() > getMax()) {
+				setPosition(getMax() - getWidth(), getYReal());
+			}
+
+			inverseX();
+		}
+
+		for (ViewableElement e : getAssociated()) {
+			e.update();
+		}
+	}
 
 }

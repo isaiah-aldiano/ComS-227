@@ -10,7 +10,7 @@ package hw4;
  * @author YOUR NAME HERE
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class LiftElement {
+public class LiftElement extends ParentableElement {
 
 	/**
 	 * Constructs a new Elevator. Initially the upper and lower boundaries are
@@ -23,7 +23,7 @@ public class LiftElement {
 	 * @param height element's height
 	 */
 	public LiftElement(double x, double y, int width, int height) {
-		// TODO: everything
+		super(x, y, width, height);
 	}
 
 	// TODO: everything
