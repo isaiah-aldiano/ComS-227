@@ -5,7 +5,7 @@ package hw4;
  * frame according to a <em>velocity</em> vector (deltaX, deltaY). The units are
  * assumed to be "pixels per frame".
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
 public class MovingElement extends DynamicElement {
@@ -23,6 +23,10 @@ public class MovingElement extends DynamicElement {
 		super(x, y, width, height);
 	}
 
-	// TODO: everything
+	@Override
+	public void update() {
+		super.update();
+		setPosition(getXReal() + getDeltaX(), getYReal() + getDeltaY());
+	}
 
 }

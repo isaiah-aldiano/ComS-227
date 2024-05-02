@@ -1,5 +1,7 @@
 package hw4;
 
+import api.AbstractElement;
+
 /**
  * A follower element is one that is associated with another "base" element such
  * as a PlatformElement or LiftElement. Specifically, the follower element's
@@ -10,13 +12,13 @@ package hw4;
  * oscillate between the left and right edges of the PlatformElement or
  * LiftElement it is associated with.
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
 public class FollowerElement extends BoundedElement {
 
 	private int offset;
-	private ViewableElement base;
+	private DynamicElement base;
 
 	/**
 	 * Constructs a new FollowerElement. Before being added to a "base" element such
@@ -36,8 +38,40 @@ public class FollowerElement extends BoundedElement {
 		this.offset = initialOffset;
 	}
 
-	public void setBase(ViewableElement base) {
-		this.base = base;
-//		setPosition(base.getXReal() + offset, base.getYReal() - getHeight() - );
+	/*
+	 * Sets base for element
+	 */
+	public void setBase(AbstractElement base) {
+		this.base = (DynamicElement) base;
+		setPosition(base.getXReal() + offset, base.getYReal() - getHeight());
+		setBounds(base.getXReal(), base.getXReal() + base.getWidth());
+	}
+
+	@Override
+	public void update() {
+
+		// Update the bounds of the FollowerElement with the size of the BaseElement
+		setBounds(base.getXReal(), base.getXReal() + base.getWidth());
+
+		// When deltaX is 0 FollowerElement acts like AttachedElement
+		if (getDeltaX() == 0) {
+			super.update();
+			setPosition(base.getXReal() + offset, base.getYReal() - getHeight());
+		} else {
+			// IF x + deltaX or rightX + deltaX is within bounds update positon
+			if (getXReal() + getDeltaX() >= getMin()
+					&& (getXReal() + getWidth()) + getDeltaX() + base.getDeltaX() <= getMax()) {
+				super.update();
+				setPosition(getXReal() + getDeltaX() + base.getDeltaX(), base.getYReal() - getHeight());
+			} else { // If x/rightX + deltaX leaves bounds then adjust accordingly
+				if (getXReal() + getDeltaX() + base.getDeltaX() < getMin()) {
+					setPosition(getMin(), base.getYReal() - getHeight());
+				} else if ((getXReal() + getWidth()) + getDeltaX() + base.getDeltaX() > getMax()) {
+					setPosition(getMax() - getWidth(), base.getYReal() - getHeight());
+				}
+
+				inverseX();
+			}
+		}
 	}
 }

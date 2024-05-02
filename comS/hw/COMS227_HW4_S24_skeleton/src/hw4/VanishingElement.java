@@ -4,7 +4,7 @@ package hw4;
  * An element that does not move. Instead, it is intended to appear on the
  * screen for a fixed number of frames.
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
 public class VanishingElement extends ViewableElement {
@@ -26,9 +26,10 @@ public class VanishingElement extends ViewableElement {
 		this.life = initialLife;
 	}
 
-	// TODO: everything
-
-	public int getLife() {
+	/*
+	 * Return value of life
+	 */
+	protected int getLife() {
 		return life;
 	}
 

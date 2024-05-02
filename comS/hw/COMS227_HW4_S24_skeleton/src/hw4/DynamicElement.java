@@ -1,6 +1,14 @@
 package hw4;
 
+/*
+ * @author Isaiah Aldiano
+ */
 public abstract class DynamicElement extends ViewableElement {
+
+	/*
+	 * Extends the abstract ViewableElement to add methods for freely moving
+	 * elements
+	 */
 
 	private double deltaX;
 	private double deltaY;
@@ -18,8 +26,18 @@ public abstract class DynamicElement extends ViewableElement {
 		return deltaX;
 	}
 
+	/*
+	 * Inverts x value
+	 */
 	public void inverseX() {
 		deltaX *= -1;
+	}
+
+	/*
+	 * Inverts y value
+	 */
+	public void inverseY() {
+		deltaY *= -1;
 	}
 
 	/**
@@ -29,21 +47,19 @@ public abstract class DynamicElement extends ViewableElement {
 		return deltaY;
 	}
 
+	/*
+	 * Sets velocity of element
+	 */
 	public void setVelocity(double deltaX, double deltaY) {
 		this.deltaX = deltaX;
 		this.deltaY = deltaY;
 	}
 
+	/*
+	 * Increases deltaY with gravity
+	 */
 	public void deltaYPlusGravity(double gravity) {
 		this.deltaY += gravity;
-	}
-
-	@Override
-	public void update() {
-		super.update();
-
-		// Updates real x and y with deltaX and deltaY
-		setPosition(getXReal() + getDeltaX(), getYReal() + getDeltaY());
 	}
 
 }

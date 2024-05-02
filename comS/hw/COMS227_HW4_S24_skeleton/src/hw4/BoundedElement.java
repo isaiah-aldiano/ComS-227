@@ -1,6 +1,14 @@
 package hw4;
 
+/*
+ * @author Isaiah Aldiano
+ */
 public abstract class BoundedElement extends DynamicElement {
+
+	/*
+	 * Extends abstract DynamicElement to add methods for DynamicElements that
+	 * oscillate in a given area
+	 */
 
 	private double min;
 	private double max;
@@ -15,6 +23,9 @@ public abstract class BoundedElement extends DynamicElement {
 		this.right = x + width;
 	}
 
+	/*
+	 * Sets bounds for the element to oscillate between
+	 */
 	public void setBounds(double min, double max) {
 		this.min = min;
 		this.max = max;

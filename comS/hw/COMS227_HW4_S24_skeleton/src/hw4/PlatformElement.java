@@ -7,10 +7,10 @@ package hw4;
  * a list of <em>associated</em> elements whose basic motion all occurs relative
  * to the PlatformElement.
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class PlatformElement extends ParentableElement {
+public class PlatformElement extends BaseElement {
 
 	/**
 	 * Constructs a new PlatformElement. Initially the left and right boundaries are
@@ -31,11 +31,16 @@ public class PlatformElement extends ParentableElement {
 		// If deltaX doesn't surpass max or min call normal update
 		if (getXReal() + getDeltaX() >= getMin() && (getXReal() + getWidth()) + getDeltaX() <= getMax()) {
 			super.update();
+			setPosition(getXReal() + getDeltaX(), getYReal() + getDeltaY());
+
 		} else {
+			// Left side limit reached
 			if (getXReal() + getDeltaX() < getMin()) {
 				setPosition(getMin(), getYReal());
 
-			} else if ((getXReal() + getWidth()) + getDeltaX() > getMax()) {
+			}
+			// Right side limit reached
+			else if ((getXReal() + getWidth()) + getDeltaX() > getMax()) {
 				setPosition(getMax() - getWidth(), getYReal());
 			}
 

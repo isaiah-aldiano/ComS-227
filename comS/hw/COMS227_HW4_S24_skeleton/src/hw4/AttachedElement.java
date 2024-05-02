@@ -1,20 +1,21 @@
 package hw4;
 
+import api.AbstractElement;
+
 /**
  * An attached element is one that is associated with another "base" element
  * such as a PlatformElement or a LiftElement. Specifically, the attached
  * element's movement is determined by the movement of the base element, the
  * element always remains a fixed distance away.
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
 public class AttachedElement extends ViewableElement {
 
 	private int offset;
 	private double hover;
-	private double staticY;
-	private ViewableElement base;
+	private AbstractElement base;
 
 	/**
 	 * Constructs a new AttachedElement. Before being added to an associated "base"
@@ -37,19 +38,20 @@ public class AttachedElement extends ViewableElement {
 		super(0, 0, width, height);
 		this.offset = offset; // X
 		this.hover = hover; // Y
-		this.staticY = 0;
 	}
 
-	public void setBase(ViewableElement base) {
+	/*
+	 * Sets the base element of attached element
+	 */
+	public void setBase(AbstractElement base) {
 		this.base = base;
-		this.staticY = base.getYReal() - getHeight() - hover;
-		setPosition(base.getXReal() + offset, staticY);
+		setPosition(base.getXReal() + offset, base.getYReal() - getHeight() - hover);
 	}
 
 	@Override
 	public void update() {
 		super.update();
-		setPosition(base.getXReal() + offset, staticY);
+		setPosition(base.getXReal() + offset, base.getYReal() - getHeight() - hover);
 	}
 
 }

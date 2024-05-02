@@ -7,10 +7,10 @@ package hw4;
  * <em>associated</em> elements whose basic motion all occurs relative to the
  * LiftElement.
  * 
- * @author YOUR NAME HERE
+ * @author Isaiah Aldiano
  */
 //TODO: This class must directly or indirectly extend AbstractElement
-public class LiftElement extends ParentableElement {
+public class LiftElement extends BaseElement {
 
 	/**
 	 * Constructs a new Elevator. Initially the upper and lower boundaries are
@@ -26,6 +26,30 @@ public class LiftElement extends ParentableElement {
 		super(x, y, width, height);
 	}
 
-	// TODO: everything
+	@Override
+	public void update() {
+		// If deltaX doesn't surpass max or min call normal update
+		if (getYReal() + getDeltaY() >= getMin() && (getYReal() + getHeight()) + getDeltaY() <= getMax()) {
+			super.update();
+			setPosition(getXReal(), getYReal() + getDeltaY());
+
+		} else {
+			// Top limit reached
+			if (getYReal() + getDeltaY() < getMin()) {
+				setPosition(getXReal(), getMin());
+
+			}
+			// Bottom limit reached
+			else if (getYReal() + getHeight() + getDeltaX() > getMax()) {
+				setPosition(getXReal(), getMax() - getHeight());
+			}
+
+			inverseY();
+		}
+
+		for (ViewableElement e : getAssociated()) {
+			e.update();
+		}
+	}
 
 }

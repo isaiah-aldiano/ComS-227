@@ -26,7 +26,4 @@ public class SimpleElement extends ViewableElement {
 	public SimpleElement(double x, double y, int width, int height) {
 		super(x, y, width, height);
 	}
-
-	// TODO: everything
-
 }
